@@ -15,5 +15,7 @@ const addTodo=(title)=>{
     const todo= new Todo({title,isDone:false,addedDate:Date.now()})
 }
 
-const todos = await Todo.find()
-console.log(todos)
+const getTodos = () => {
+    return Todo.find()
+}
+
