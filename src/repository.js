@@ -11,11 +11,14 @@ const todoSchema = new mongoose.Schema({
 
 const Todo = mongoose.model('Todo', todoSchema)
 
-const addTodo=(title)=>{
-    const todo= new Todo({title,isDone:false,addedDate:Date.now()})
-}
-
 const getTodos = () => {
     return Todo.find()
 }
 
+const addTodo=(title)=>{
+    const todo= new Todo({title,isDone:false,addedDate:Date.now()})
+}
+
+const deleteTodo=(id)=>{
+    return Todo.deleteOne({_id:id})
+}
