@@ -11,9 +11,9 @@ const todoSchema = new mongoose.Schema({
 
 const Todo = mongoose.model('Todo', todoSchema)
 
-const todo1 = new Todo({title: "Buy milk", isDone: false, addedDate: Date.now()})
-
-await todo1.save()
+const addTodo=(title)=>{
+    const todo= new Todo({title,isDone:false,addedDate:Date.now()})
+}
 
 const todos = await Todo.find()
 console.log(todos)
