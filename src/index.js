@@ -10,22 +10,6 @@ app.use(bodyParser.json())
 
 mongoose.connect('mongodb://localhost:27017/Todos');
 
-//defining schema for db
-    const todoSchema = new mongoose.Schema({
-        title: String,
-        isDone: Boolean,
-        addedDate: Date
-    })
-
-    const Todo = mongoose.model('Todo', todoSchema)
-
-    const todo1 = new Todo({title: "Buy milk", isDone: false, addedDate: Date.now()})
-
-    await todo1.save()
-
-    const todos = await Todo.find()
-    console.log(todos)
-
 app.get('/', function (req, res) {
     res.send('homepage');
 })
