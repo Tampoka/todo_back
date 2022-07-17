@@ -8,11 +8,8 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-//connecting to db through mongoose
-main().catch(err => console.log(err));
+mongoose.connect('mongodb://localhost:27017/Todos');
 
-async function main() {
-    await mongoose.connect('mongodb://localhost:27017/users');
 //defining schema for db
     const todoSchema = new mongoose.Schema({
         title: String,
@@ -28,7 +25,6 @@ async function main() {
 
     const todos = await Todo.find()
     console.log(todos)
-}
 
 app.get('/', function (req, res) {
     res.send('homepage');
